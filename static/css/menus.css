@@ -1,0 +1,140 @@
+/*
+* Welcome
+*/
+
+#welcome > nav {
+    font-weight: bold;
+}
+#welcome > nav .subtitle {
+    height: 14px;
+
+    line-height: 14px;
+    font-size: 14px;
+
+    color: var(--orange);
+}
+#welcome > div {
+    border-top: 1px solid var(--white);
+}
+
+#continue_playing.disabled {
+    display: none;
+}
+#continue {
+    justify-content: right;
+}
+#continue > button {
+    height: 32px;
+    width: 140px;
+}
+
+#start_game > input {
+    flex-grow: 1;
+
+    width: 140px;
+}
+#start_game > button {
+    height: 32px;
+    margin-left: 10px;
+    width: 90px;
+}
+
+#create_game > * {
+    flex-basis: 50px;
+    flex-grow: 1;
+
+    text-align: center;
+}
+#create_game > select {
+    flex-grow: 1;
+
+    height: 32px;
+    width: 100px;
+    margin-right: 10px;
+}
+#create_game > button {
+    height: 32px;
+    width: 100px;
+}
+
+#search_game {
+    flex-direction: column;
+    align-items: center;
+}
+#search_game > input {
+    margin-bottom: 10px;
+}
+#search_game > button {
+    height: 32px;
+    margin-bottom: 20px;
+    width: 100px;
+}
+
+/*
+* Info
+*/
+
+#info > div {
+    border-top: 1px solid var(--white);
+    padding: 20px 0;
+    margin: 0;
+}
+
+#ui_options {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+#ui_options > label {
+    margin-top: 10px;
+    margin-bottom: 5px;
+}
+#ui_options > select {
+    height: 32px;
+    width: 120px;
+
+    line-height: 32px;
+}
+
+/*
+* Inputs
+*/
+
+form {
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+    justify-content: center;
+}
+
+input, button, select {
+    display: block;
+
+    height: 28px;
+    padding: 2px 5px;
+    border: unset;
+    border-radius: 3px;
+    outline: none;
+
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+    line-height: 28px;
+
+    color: var(--white);
+    background-color: var(--dark-blue);
+
+    appearance: none;
+}
+input {
+    color: var(--white);
+
+    cursor: text;
+}
+input:valid {
+    color: var(--green);
+}
+input:invalid {
+    color: var(--orange);
+}

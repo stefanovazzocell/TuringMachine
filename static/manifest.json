@@ -1,0 +1,28 @@
+{
+  "id": "https://tm.stefanovazzoler.com",
+  "short_name": "Turing Machine",
+  "name": "Turing Machine Companion",
+  "icons": [
+    { "src": "/images/icon/2048.png", "sizes": "2048x2048", "type": "image/png" },
+    { "src": "/images/icon/512.png", "sizes": "512x512", "type": "image/png" },
+    { "src": "/images/icon/384.png", "sizes": "384x384", "type": "image/png" },
+    { "src": "/images/icon/192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "/images/icon/152.png", "sizes": "152x152", "type": "image/png" },
+    { "src": "/images/icon/144.png", "sizes": "144x144", "type": "image/png" },
+    { "src": "/images/icon/128.png", "sizes": "128x128", "type": "image/png" },
+    { "src": "/images/icon/120.png", "sizes": "120x120", "type": "image/png" },
+    { "src": "/images/icon/96.png", "sizes": "96x96", "type": "image/png" },
+    { "src": "/images/icon/72.png", "sizes": "72x72", "type": "image/png" }
+  ],
+  "screenshots": [
+    { "src": "/images/screen/wide.webp", "type": "image/webp", "sizes": "2160x1620", "form_factor": "wide" },
+    { "src": "/images/screen/narrow.webp", "type": "image/webp", "sizes": "1170x2532", "form_factor": "narrow" }
+  ],
+  "start_url": "/",
+  "display": "standalone",
+  "display_override": ["standalone", "minimal-ui", "fullscreen"],
+  "theme_color": "#134",
+  "background_color": "#023",
+  "protocol_handlers": []
+  }
+  

@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <link rel="manifest" href="manifest.json" />
+    <link rel="icon" href="/favicon.ico" type="image/x-icon"/>
+    <link rel="apple-touch-icon" sizes="120x120" href="images/icon/120.png"/>
+    <link rel="apple-touch-icon" sizes="152x152" href="images/icon/152.png"/>
+    <title>Turing Machine Companion</title>
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/menus.css">
+    <link rel="stylesheet" href="css/tools.css">
+    <link rel="stylesheet" href="css/cards.css">
+    <script src="js/api.js" defer></script>
+    <script src="js/base.js" defer></script>
+    <script src="js/tools.js" defer></script>
+    <script src="js/cards.js" defer></script>
+    <script src="js/setup.js" defer></script>
+</head>
+<body>
+    <nav>
+        <div id="new_game" class="btn icon"></div>
+        <div id="header">
+            <div id="title">Turing Machine</div>
+            <span id="game_id" class="btn">...</span>
+        </div>
+        <div id="info_btn" class="btn icon"></div>
+    </nav>
+    <div id="tools" data-view="rounds">
+        <div id="numbers">
+            <div>
+                <img src="images/shapes/triangle.svg" alt="">
+                <img src="images/shapes/square.svg" alt="">
+                <img src="images/shapes/circle.svg" alt="">
+                <div data-digit="1">5</div><div data-digit="2">5</div><div data-digit="3">5</div>
+                <div data-digit="1">4</div><div data-digit="2">4</div><div data-digit="3">4</div>
+                <div data-digit="1">3</div><div data-digit="2">3</div><div data-digit="3">3</div>
+                <div data-digit="1">2</div><div data-digit="2">2</div><div data-digit="3">2</div>
+                <div data-digit="1">1</div><div data-digit="2">1</div><div data-digit="3">1</div>
+            </div>
+        </div>
+        <div id="rounds">
+            <div id="rounds_btns">
+                <div id="check_solution_btn" class="btn orange">Solve</div>
+                <div id="new_round" class="btn">New round</div>
+            </div>
+        </div>
+    </div>
+    <div id="cards">
+        <div id="cards_viewport" data-cards="6" data-zoom="0" data-verify="0">
+            <div class="card disabled" data-card="1">
+                <div class="letter"><span>A</span></div>
+                <div class="verifier disabled"><span></span></div>
+                <div class="laws" data-count="9">
+                    <div></div><div></div><div></div><div></div><div></div>
+                    <div></div><div></div><div></div><div></div>
+                </div>
+            </div>
+            <div class="card disabled" data-card="2">
+                <div class="letter"><span>B</span></div>
+                <div class="verifier disabled"><span></span></div>
+                <div class="laws" data-count="9">
+                    <div></div><div></div><div></div><div></div><div></div>
+                    <div></div><div></div><div></div><div></div>
+                </div>
+            </div>
+            <div class="card disabled" data-card="3">
+                <div class="letter"><span>C</span></div>
+                <div class="verifier disabled"><span></span></div>
+                <div class="laws" data-count="9">
+                    <div></div><div></div><div></div><div></div><div></div>
+                    <div></div><div></div><div></div><div></div>
+                </div>
+            </div>
+            <div class="card disabled" data-card="4">
+                <div class="letter"><span>D</span></div>
+                <div class="verifier disabled"><span></span></div>
+                <div class="laws" data-count="9">
+                    <div></div><div></div><div></div><div></div><div></div>
+                    <div></div><div></div><div></div><div></div>
+                </div>
+            </div>
+            <div class="card disabled" data-card="5">
+                <div class="letter"><span>E</span></div>
+                <div class="verifier disabled"><span></span></div>
+                <div class="laws" data-count="9">
+                    <div></div><div></div><div></div><div></div><div></div>
+                    <div></div><div></div><div></div><div></div>
+                </div>
+            </div>
+            <div class="card disabled" data-card="6">
+                <div class="letter"><span>F</span></div>
+                <div class="verifier disabled"><span></span></div>
+                <div class="laws" data-count="9">
+                    <div></div><div></div><div></div><div></div><div></div>
+                    <div></div><div></div><div></div><div></div>
+                </div>
+            </div>
+        </div>
+        <div id="cards_options">
+            <div id="cards_zoom" class="btn">view all</div>
+            <div id="cards_verify" class="btn">verify</div>
+        </div>
+    </div>
+    <!-- Dialogs -->
+    <dialog id="verify" data-card="" data-proposal="">
+        <nav>
+            <div class="header">
+                <div class="title">Propose <span id="verify_proposal" class="orange"></span>?</div>
+            </div>
+            <div class="close_btn btn icon"></div>
+        </nav>
+        <div id="verify_card"></div>
+        <div id="verify_action">
+            <div id="verify_btn" class="btn">Verify</div>
+        </div>
+    </dialog>
+    <dialog id="solve">
+        <nav>
+            <div class="header"><div class="title">Check your solution</div></div>
+            <div class="close_btn btn icon"></div>
+        </nav>
+        <div>
+            You've played <b class="number_of_rounds"></b> and asked <b class="number_of_questions"></b>.
+        </div>
+        <div>
+            <form id="check_solution">
+                <input id="solution" type="text" minlength="3" maxlength="3" placeholder="###" pattern="[1-5]{3}">
+                <button type="submit" class="btn">Check</button>
+            </form>
+        </div>
+    </dialog>
+    <dialog id="info">
+        <nav>
+            <div class="header"><div class="title">Info</div></div>
+            <div class="close_btn btn icon"></div>
+        </nav>
+        <div class="info">
+            <p>
+                The game you're playing is <span class="game_id orange"></span>.
+            </p>
+            <p>
+                Play with the criterias <span class="game_criterias orange"></span>
+                and the verifiers <span class="game_vc orange"></span>.
+            </p>
+            <p>
+                For official games check out <a href="https://turingmachine.info/" target="_blank">turingmachine.info</a>!
+            </p>
+        </div>
+        <div id="ui_options">
+            <label for="ui_options">Cards language:</label>
+            <select id="language">
+                <option value="br">Português</option>
+                <option value="cns">简体中文</option>
+                <option value="cnt">繁體中文</option>
+                <option value="cz">Česky</option>
+                <option value="de">Deutsch</option>
+                <option value="en">English</option>
+                <option value="fr">Français</option>
+                <option value="gr">Ελληνικά</option>
+                <option value="hu">Magyar</option>
+                <option value="it">Italiano</option>
+                <option value="jp">日本語</option>
+                <option value="kr">한국어</option>
+                <option value="nl">Dutch</option>
+                <option value="pl">Polski</option>
+                <option value="ru">Русский</option>
+                <option value="sp">Español</option>
+                <option value="th">ไทย</option>
+                <option value="ua">Українська</option>
+            </select>
+        </div>
+    </dialog>
+    <dialog id="welcome">
+        <nav>
+            <div class="header">
+                <div class="title">Turing Machine</div>
+                <div class="subtitle">Companion App</div>
+            </div>
+        </nav>
+        <div id="continue_playing" class="disabled">
+            <p>
+                Would you like to continue playing <span id="restored_game_id" class="orange"></span>?
+            </p>
+            <form id="continue">
+                <button type="submit" class="btn">Continue</button>
+            </form>
+        </div>
+        <div>
+            <p>
+                If you know what game you want to play, enter the ID and hit "Play"
+            </p>
+            <form id="start_game">
+                <input id="game_id_input" type="text" minlength="9" maxlength="11" placeholder="game id" pattern="[a-zA-Z0-9\s]{9,11}" required>
+                <button type="submit" class="btn">Play</button>
+            </form>
+        </div>
+        <div>
+            <p>
+                To create a brand new game, choose from the options below and hit "Create"
+            </p>
+            <form id="create_game">
+                <select id="create_game_difficulty" required>
+                    <option value="hard" selected="selected">Hard</option>
+                    <option value="standard">Standard</option>
+                    <option value="easy">Easy</option>
+                </select>
+                <select id="create_game_cards" required>
+                    <option value="6" selected="selected">6 cards</option>
+                    <option value="5">5 cards</option>
+                    <option value="4">4 cards</option>
+                </select>
+                <button type="submit" class="btn">Create</button>
+            </form>
+        </div>
+        <div>
+            <p>
+                To play a game from the official website or booklet, enter the criteria and verifiers numbers.
+            </p>
+            <form id="search_game">
+                <input id="criterias_input" type="text" placeholder="criterias" pattern="(\d{1,2},\s*){3,5}\d{1,2}" required>
+                <input id="verifiers_input" type="text" placeholder="verifiers" pattern="(\d{3},\s*){3,5}\d{3}" required>
+                <button type="submit" class="btn">Search</button>
+            </form>
+            <details>
+                <summary>Do you need help?</summary>
+                <p>
+                    Here's an example, if the game has the criteria cards "4, 9, 11, 14" and verifiers "◊447, ◊646, ◊556, ◊322" enter the following:<br>
+                    Criterias: <span class="orange">4, 9, 11, 14</span><br>
+                    Verifiers: <span class="orange">447, 646, 556, 322</span><br>
+                </p>
+            </details>
+        </div>
+    </dialog>
+    <dialog id="spinner"></dialog>
+    <dialog id="alert"></dialog>
+    <dialog id="duplicate_game">
+        <div class="orange">
+            You can only have one instance of this game open at any given time.
+        </div>
+        <div class="orange">
+            The game was opened on a different browser tab, continue playing there.
+        </div>
+    </dialog>
+    <!-- Templates -->
+    <template id="round_template">
+        <div class="round" data-locked="0" data-cards="6">
+            <div class="triangle"></div>
+            <select data-digit="1">
+                <option>?</option><option value="1">1</option>
+                <option value="2">2</option><option value="3">3</option>
+                <option value="4">4</option><option value="5">5</option>
+            </select>
+            <div class="square"></div>
+            <select data-digit="2">
+                <option>?</option><option value="1">1</option>
+                <option value="2">2</option><option value="3">3</option>
+                <option value="4">4</option><option value="5">5</option>
+            </select>
+            <div class="circle"></div>
+            <select data-digit="3">
+                <option>?</option><option value="1">1</option>
+                <option value="2">2</option><option value="3">3</option>
+                <option value="4">4</option><option value="5">5</option>
+            </select>
+            <div data-card="1">A</div><div data-card="2">B</div>
+            <div data-card="3">C</div><div data-card="4">D</div>
+            <div data-card="5">E</div><div data-card="6">F</div>
+        </div>
+    </template>
+    <template id="solution_template">
+        <div>
+            <b class="solution_code"></b> is the <b class="solution_result"></b> solution 
+        </div>
+    </template>
+</body>
+</html>

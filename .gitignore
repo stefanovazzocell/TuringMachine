@@ -23,3 +23,9 @@ go.work.sum
 
 # env file
 .env
+
+# Skip criteria cards
+static/images/criteria/*
+
+# Do not sync binaries
+bin/*

@@ -1,0 +1,236 @@
+:root {
+    /* Background */
+    --black: #111;
+    --grey: #222;
+    --dark-blue: #023;
+    --orange-bg: #f84;
+    /* Foreground */
+    --white: #eee;
+    --blue: #134;
+    --light-gray: #aaa;
+    --green: #3b6;
+    --orange: #f62;
+    /* special */
+    --triangle: #5be;
+    --square: #fc1;
+    --circle: #86b;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+
+    height: 100dvh;
+    width: 100vw;
+    margin: unset;
+
+    background-color: var(--black);
+    color: var(--white);
+
+    font-family: 'Courier New', Courier, monospace;
+    text-align: center;
+
+    user-select: none;
+
+    overflow: hidden;
+}
+body > * {
+    flex-grow: 1;
+    flex-shrink: 1;
+    height: 50px;
+
+    width: 100vw;
+}
+
+/*
+* Navigation bar
+*/
+
+nav {
+    display: grid;
+    grid-template-columns: 60px 1fr 60px;
+    
+    height: 60px;
+    flex-grow: 0;
+
+    line-height: 60px;
+}
+
+#new_game::after {
+    content: '⟲';
+}
+#info_btn::after {
+    content: 'ⓘ';
+}
+#header, .header {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#title, .title {
+    height: 22px;
+
+    line-height: 22px;
+    font-size: 22px;
+}
+#game_id {
+    height: 14px;
+
+    line-height: 14px;
+    font-size: 14px;
+
+    color: var(--green);
+}
+
+/*
+* Buttons
+*/
+
+.btn, a {
+    font-weight: bold;
+    
+    color: var(--green);
+
+    cursor: pointer;
+}
+.btn.disabled {
+    color: var(--light-gray);
+
+    cursor: not-allowed;
+}
+.btn:not(.icon):not(.disabled):hover, .btn:not(.icon):not(.disabled):active, a:hover, a:active {
+    text-decoration: underline;
+}
+.btn:not(.disabled):hover, a:hover {
+    text-shadow: 0 0 1px var(--green);
+}
+.btn:not(.disabled):active, a:active {
+    text-shadow: 0 0 2px var(--green);
+}
+
+/*
+* Modals
+*/
+
+:modal {
+    display: flex;
+    flex-direction: column;
+    object-position: center;
+
+    width: calc(100vw - 30px);
+    height: fit-content;
+    max-width: 400px;
+    padding: 10px;
+    border-radius: 5px;
+    outline: unset;
+    border: unset;
+
+    box-shadow: 0 0 2px var(--dask-blue);
+
+    color: var(--white);
+    background-color: var(--blue);
+
+    font-size: 0.9em;
+}
+:modal::backdrop {
+    background-color: var(--black);
+    opacity: 0.5;
+}
+:modal > nav {
+    grid-template-columns: 1fr 60px;
+    height: 60px;
+    line-height: 60px;
+}
+:modal > nav > .header {
+    text-align: left;
+    padding-left: 15px;
+}
+:modal > div {
+    text-align: left;
+    margin: 10px 15px 10px 15px;
+}
+
+.close_btn::after {
+    content: '✖'
+}
+
+/*
+* Spinner Modal
+*/
+
+@keyframes rotation {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+#spinner {
+    align-items: center;
+    justify-content: center;
+    
+    width: 40px;
+    height: 40px;
+    padding: unset;
+    border-radius: 50%;
+    border: 10px solid transparent;
+    border-top-color: var(--green);
+    border-bottom-color: var(--orange);
+
+    animation: rotation 1s linear infinite;
+}
+#spinner::backdrop {
+    background-color: var(--blue);
+    opacity: 0.8;
+}
+
+/*
+* Alert
+*/
+
+#alert {
+    width: calc(95vw - 40px);
+    max-width: 500px;
+    height: fit-content;
+    border: none;
+    margin: 15px auto;
+    padding: 10px 20px;
+    border-radius: 10px;
+
+    font-size: 18px;
+    line-height: 28px;
+    font-weight: bold;
+
+    color: var(--dark-blue);
+    background-color: var(--orange-bg);
+}
+
+/*
+* Duplicate game
+*/
+
+#duplicate_game::backdrop {
+    opacity: 1;
+}
+
+/*
+* Special
+*/
+
+.orange {
+    color: var(--orange);
+    font-weight: bold;
+}
+
+.triangle, .square, .circle {
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+}
+.triangle {
+    background-image: url("/images/shapes/triangle.svg");
+}
+.square {
+    background-image: url("/images/shapes/square.svg");
+}
+.circle {
+    background-image: url("/images/shapes/circle.svg");
+}
