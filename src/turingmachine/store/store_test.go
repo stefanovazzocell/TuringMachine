@@ -10,8 +10,8 @@ import (
 	"sync"
 	"testing"
 
-	"stefanovazzoler.com/turingmachine/src/turingmachine/game"
-	"stefanovazzoler.com/turingmachine/src/turingmachine/store"
+	"github.com/stefanovazzocell/TuringMachine/src/turingmachine/game"
+	"github.com/stefanovazzocell/TuringMachine/src/turingmachine/store"
 )
 
 // Returns a random file name in the current directory

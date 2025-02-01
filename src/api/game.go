@@ -7,8 +7,8 @@ import (
 	"net/url"
 	"strings"
 
-	"stefanovazzoler.com/turingmachine/src/turingmachine/game"
-	"stefanovazzoler.com/turingmachine/src/turingmachine/store"
+	"github.com/stefanovazzocell/TuringMachine/src/turingmachine/game"
+	"github.com/stefanovazzocell/TuringMachine/src/turingmachine/store"
 )
 
 type GameResponse struct {

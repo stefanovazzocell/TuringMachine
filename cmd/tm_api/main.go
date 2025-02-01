@@ -7,7 +7,7 @@ import (
 	"os"
 	"time"
 
-	"stefanovazzoler.com/turingmachine/src/api"
+	"github.com/stefanovazzocell/TuringMachine/src/api"
 )
 
 var (

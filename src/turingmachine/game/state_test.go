@@ -4,7 +4,7 @@ import (
 	"math/rand"
 	"testing"
 
-	"stefanovazzoler.com/turingmachine/src/turingmachine/game"
+	"github.com/stefanovazzocell/TuringMachine/src/turingmachine/game"
 )
 
 // Returns true if this state contains a redundant entry.

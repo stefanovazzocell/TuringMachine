@@ -4,7 +4,7 @@ import (
 	"slices"
 	"testing"
 
-	"stefanovazzoler.com/turingmachine/src/turingmachine/game"
+	"github.com/stefanovazzocell/TuringMachine/src/turingmachine/game"
 )
 
 func TestCriterias(t *testing.T) {

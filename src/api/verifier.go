@@ -5,7 +5,7 @@ import (
 	"net/http"
 	"strconv"
 
-	"stefanovazzoler.com/turingmachine/src/turingmachine/game"
+	"github.com/stefanovazzocell/TuringMachine/src/turingmachine/game"
 )
 
 type VerifyResponse struct {

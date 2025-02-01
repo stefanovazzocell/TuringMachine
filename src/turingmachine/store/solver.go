@@ -9,7 +9,7 @@ import (
 	"sync"
 	"time"
 
-	"stefanovazzoler.com/turingmachine/src/turingmachine/game"
+	"github.com/stefanovazzocell/TuringMachine/src/turingmachine/game"
 )
 
 const (

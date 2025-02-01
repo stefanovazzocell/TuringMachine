@@ -4,7 +4,7 @@ import (
 	"strconv"
 	"testing"
 
-	"stefanovazzoler.com/turingmachine/src/turingmachine/game"
+	"github.com/stefanovazzocell/TuringMachine/src/turingmachine/game"
 )
 
 func TestCode(t *testing.T) {

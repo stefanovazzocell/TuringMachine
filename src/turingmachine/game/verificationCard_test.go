@@ -5,7 +5,7 @@ import (
 	"strings"
 	"testing"
 
-	"stefanovazzoler.com/turingmachine/src/turingmachine/game"
+	"github.com/stefanovazzocell/TuringMachine/src/turingmachine/game"
 )
 
 func numberMatchesString(n uint16, str string) bool {
