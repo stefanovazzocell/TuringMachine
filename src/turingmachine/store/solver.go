@@ -4,7 +4,6 @@ import (
 	"errors"
 	"log/slog"
 	"os"
-	"runtime/pprof"
 	"slices"
 	"sync"
 	"time"
@@ -21,14 +20,6 @@ const (
 
 // solves for all the possible games and writes the solutions to a file
 func solve(filename string) (err error) {
-	f, err := os.OpenFile("./cpu.prof", os.O_CREATE|os.O_RDWR|os.O_EXCL, 0644)
-	if err != nil {
-		panic(err)
-	}
-	defer f.Close()
-	pprof.StartCPUProfile(f)
-	defer pprof.StopCPUProfile()
-
 	// Delete any existing file (if present)
 	err = os.Remove(filename)
 	if err != nil && !errors.Is(err, os.ErrNotExist) {
