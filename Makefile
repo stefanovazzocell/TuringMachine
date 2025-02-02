@@ -2,7 +2,7 @@
 
 .PHONY: run
 run:
-	go run ./cmd/tm_api -verbose -demo
+	go run ./cmd/tm_api -log_level DEBUG
 
 .PHONY: build
 build:
