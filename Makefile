@@ -42,7 +42,6 @@ setup:
 clean:
 	go mod tidy
 	rm -f bin/*
-	rm -f 
 	go clean
 	go fmt ./...
 	go vet ./...
